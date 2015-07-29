@@ -1,6 +1,6 @@
 #Improved Starter Ionic Application Template with Parse Integration
 
-	Based mostly on the Starters mad by ![aaronksaunders](https://github.com/aaronksaunders/parse-starter-ionic) and ![alevicki](https://github.com/alevicki/ionic-parse-starter)
+Based mostly on the Starters made by ![aaronksaunders](https://github.com/aaronksaunders/parse-starter-ionic) and ![alevicki](https://github.com/alevicki/ionic-parse-starter)
 
 ## Overiew
 This  application is provided as a starter to get your [Ionic Framework](http://ionicframework.com/getting-started/) and [Parse Application](https://parse.com/products/core) configured easily. The login flow is based on the two projects mentioned above and some changes have been made in order to make it compatible with a tabbed layout as well as a leftMenu that can be use for navigation.
@@ -24,5 +24,5 @@ Using the values from the Parse Console, set the properties in the app.js file s
 ## Starter App Project Structure
 The starter app is a Two-Tab based app with a Login Screen and an Account Creation Screen. The application will create Parse Users for you after it is configured properly.
 
-	![For more configuration see aaronksaunders' documentation](https://github.com/aaronksaunders/parse-starter-ionic)
+![For more configuration see aaronksaunders' documentation](https://github.com/aaronksaunders/parse-starter-ionic)
 
