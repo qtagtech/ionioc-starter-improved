@@ -6,8 +6,8 @@
 angular.module('starter',
     [
         'ionic',
-        'app.controllers',
-        'app.services',
+        'application.controllers',
+        'application.services',
         'user.controllers',
         'user.services'
     ]
@@ -21,8 +21,8 @@ angular.module('starter',
  * parse constants
  */
     .value('ParseConfiguration', {
-        applicationId: "xxxxxxxx",
-        javascriptKey: "yyyyyyyyy"
+        applicationId: "zrlNcIjMRDe1Wbv6W0e5RWyN6hnj8hQZiO2yGvQX",
+        javascriptKey: "DG05UJqgfubV6Dp8Fw4nkmHwQsl2lhIQl2i63nIv"
     })
 /**
  *
@@ -33,27 +33,67 @@ angular.module('starter',
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
+            //menu state
+            .state('app', {
+                url: "/app",
+                abstract: true,
+                templateUrl: "templates/menu.html",
+                controller: 'MainCtrl'
+            })
             // create account state
-            .state('app-signup', {
+            //has no leftMenu
+            .state('signup', {
                 url: "/signup",
-                templateUrl: "templates/user/signup.html",
+                /*views: {
+                    'menuContent' :{
+                        templateUrl: "templates/user/signup.html",
+                        controller: "SignUpController"
+                    }
+                }*/
+                templateUrl: 'templates/user/signup.html',
                 controller: "SignUpController"
+
             })
             // login state that is needed to log the user in after logout
             // or if there is no user object available
-            .state('app-login', {
+            //has no leftMenu
+            .state('login', {
                 url: "/login",
-                templateUrl: "templates/user/login.html",
+                /*views: {
+                    'menuContent' :{
+                        templateUrl: "templates/user/login.html",
+                        controller: "LoginController"
+                    }
+                }*/
+                templateUrl: 'templates/user/login.html',
                 controller: "LoginController"
             })
-
+            // forgot password state
+            //has no leftMenu
+            .state('forgot', {
+                url: "/forgot",
+                /*views: {
+                    'menuContent' :{
+                        templateUrl: "templates/user/forgot.html",
+                        controller: "ForgotController"
+                    }
+                }*/
+                templateUrl: 'templates/user/forgot.html',
+                controller: "ForgotController"
+            })
             // setup an abstract state for the tabs directive, check for a user
             // object here is the resolve, if there is no user then redirect the
             // user back to login state on the changeStateError
-            .state('tab', {
+            .state('app.tab', {
                 url: "/tab",
                 abstract: true,
-                templateUrl: "templates/tabs.html",
+                //templateUrl: "templates/tabs.html",
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/tabs.html',
+                        controller: 'TabsPageCtrl'
+                    }
+                },
                 resolve: {
                     user: function (UserService) {
                         var value = UserService.init();
@@ -63,7 +103,7 @@ angular.module('starter',
             })
 
             // Each tab has its own nav history stack:
-            .state('tab.list', {
+            .state('app.tab.list', {
                 url: '/list',
                 views: {
                     'tab-list': {
@@ -72,7 +112,7 @@ angular.module('starter',
                     }
                 }
             })
-            .state('tab.list-detail', {
+            .state('app.tab.list-detail', {
                 url: '/list/:itemId',
                 views: {
                     'tab-list': {
@@ -82,7 +122,7 @@ angular.module('starter',
                 }
             })
 
-            .state('tab.account', {
+            .state('app.tab.account', {
                 url: '/account',
                 views: {
                     'tab-account': {
@@ -93,7 +133,7 @@ angular.module('starter',
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/list');
+        $urlRouterProvider.otherwise('/app/tab/list');
 
     })
     .run(function ($ionicPlatform, $rootScope, $state) {
@@ -110,7 +150,7 @@ angular.module('starter',
                 if (error && error.error === "noUser") {
                     event.preventDefault();
 
-                    $state.go('app-login', {});
+                    $state.go('login', {});
                 }
             });
 
@@ -124,4 +164,4 @@ angular.module('starter',
                 StatusBar.styleDefault();
             }
         });
-    })
+    });

@@ -76,6 +76,14 @@ angular.module('user.services', [])
                 },
                 /**
                  *
+                 * @param _user
+                 * @returns {Promise}
+                 */
+                reset: function (_user){
+                    return Parse.User.requestPasswordReset(_user);
+                },
+                /**
+                 *
                  * @returns {Promise}
                  */
                 logout: function (_callback) {

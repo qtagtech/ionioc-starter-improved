@@ -3,7 +3,7 @@
  * here for the purpose of showing how a service might
  * be used in an application
  */
-angular.module('app.controllers', [])
+angular.module('application.controllers', [])
     .controller('ListDetailCtrl', [
         '$state', '$scope', '$stateParams', 'UserService',   // <-- controller dependencies
         function ($state, $scope, $stateParams, UserService) {
@@ -19,13 +19,14 @@ angular.module('app.controllers', [])
 
 
             $scope.doLogoutAction = function () {
-                UserService.logout().then(function () {
+                UserService.logout()
+                    .then(function () {
 
                     // transition to next state
-                    $state.go('app-login');
+                    $state.go('login');
 
                 }, function (_error) {
-                    alert("error logging in " + _error.debug);
+                    alert("error logging out " + _error.debug);
                 })
             };
 
@@ -41,4 +42,20 @@ angular.module('app.controllers', [])
             });
 
 
-        }]);
+        }])
+    .controller('MainCtrl',[
+        '$scope','$ionicSideMenuDelegate',
+        function($scope, $ionicSideMenuDelegate) {
+            $scope.toggleLeft = function() {
+            $ionicSideMenuDelegate.toggleLeft();
+        };
+    }])
+    .controller('TabsPageCtrl', [ '$scope', '$state', function($scope, $state) {
+
+        $scope.leftButtons = [{
+            type: 'button-icon icon ion-navicon',
+            tap: function(e) {
+                $scope.toggleMenu();
+            }
+        }];
+    }]);

@@ -1,20 +1,30 @@
-<!-- 
-  Create tabs with an icon and label, using the tabs-positive style. 
-  Each tab's child <ion-nav-view> directive will have its own 
-  navigation history that also transitions its views in and out.
--->
-<ion-tabs ng-class="{'tabs-icon-top':true, 'tabs-positive':true, 'tabs-top':isAndroid}">
+<ion-view left-buttons="leftButtons">
+  <!--
+    The nav bar that will be updated as we navigate between views.
+  -->
+  <!--<ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive ">
+    <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+      Back
+    </ion-nav-back-button>
+  </ion-nav-bar>-->
+  <!--
+    Create tabs with an icon and label, using the tabs-positive style.
+    Each tab's child <ion-nav-view> directive will have its own
+    navigation history that also transitions its views in and out.
+  -->
+  <ion-tabs ng-class="{'tabs-icon-top':true, 'tabs-positive':true, 'tabs-top':isAndroid}">
 
-  <!-- Friends Tab -->
-  <ion-tab title="Image Feed" icon="icon ion-camera" href="#/tab/list">
-    <ion-nav-view name="tab-list"></ion-nav-view>
-  </ion-tab>
+    <!-- Friends Tab -->
+    <ion-tab title="Image Feed" icon="icon ion-camera" href="#/tab/list">
+      <ion-nav-view name="tab-list"></ion-nav-view>
+    </ion-tab>
 
 
-  <!-- Account Tab -->
-  <ion-tab title="Account Settings" icon="icon ion-settings" href="#/tab/account">
-    <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
+    <!-- Account Tab -->
+    <ion-tab title="Account Settings" icon="icon ion-settings" href="#/app/tab/account">
+      <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
 
 
-</ion-tabs>
+  </ion-tabs>
+</ion-view>
